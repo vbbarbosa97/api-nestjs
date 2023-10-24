@@ -1,0 +1,5 @@
+https://github.com/danileao/curso-nestjs
+
+docker run --name curso-nestjs -p 5432:5432 -e POSTGRES_PASSWORD=admin -e POSTGRES_USERNAME=admin -e POSTGRES_PASSWORD_ROOT=admin -d -t bitnami/postgresql
+
+npx prisma studio (Abre uma visualização do banco no navegador)
