@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { hash } from 'bcrypt';
 import { IUserRepository } from '../../../infra/repositories/interfaces/user.interface.repository';
-import { CreateUserDTO, CreateUserResponseDTO } from '../dto/create-user.dto';
+import { CreateUserDTO, CreateUserResponseDTO } from '../../../models/dtos/user/create-user.dto';
 
 @Injectable()
 export class CreateUserUseCase {

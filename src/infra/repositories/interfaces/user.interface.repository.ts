@@ -1,6 +1,6 @@
-import { CreateUserDTO } from 'src/modules/users/dto/create-user.dto';
-import { UserCreatedDTO } from 'src/modules/users/dto/user-created.dto';
-import { UsernameAndEmailDTO } from 'src/modules/users/dto/username-email.dto';
+import { CreateUserDTO } from 'src/models/dtos/user/create-user.dto';
+import { UserCreatedDTO } from 'src/models/dtos/user/user-created.dto';
+import { UsernameAndEmailDTO } from 'src/models/dtos/user/username-email.dto';
 
 export abstract class IUserRepository {
   abstract findByUsernameOrEmail(data: UsernameAndEmailDTO): Promise<UserCreatedDTO | null>;

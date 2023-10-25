@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/providers/auth-guard.provider';
-import { CreateUserDTO } from './dto/create-user.dto';
+import { CreateUserDTO } from '../../models/dtos/user/create-user.dto';
 import { CreateUserUseCase } from './useCases/create-user.usecase';
 import { ProfileUserUseCase } from './useCases/profile-user.usecase';
 

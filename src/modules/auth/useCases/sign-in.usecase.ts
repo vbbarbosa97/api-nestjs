@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
-import { SignInDTO } from '../dto/sign-in.dto';
+import { SignInDTO } from '../../../models/dtos/auth/sign-in.dto';
 import { IUserRepository } from 'src/infra/repositories/interfaces/user.interface.repository';
 import { JwtService } from '@nestjs/jwt';
 import { compare } from 'bcrypt';
