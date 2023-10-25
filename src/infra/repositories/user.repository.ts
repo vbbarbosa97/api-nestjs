@@ -7,28 +7,29 @@ import { Injectable } from '@nestjs/common';
 export class UserPrismaRepository implements IUserRepository {
   constructor(private databaseConnection: DatabaseConnection) {}
 
+  public async findById(id: string): Promise<UserCreatedDTO> {
+    return await this.databaseConnection.user.findUnique({
+      where: { id },
+    });
+  }
+
   public async findByUsernameOrEmail(data: UsernameAndEmailDTO): Promise<UserCreatedDTO> {
-    const user = await this.databaseConnection.user.findFirst({
+    return await this.databaseConnection.user.findFirst({
       where: {
         OR: [{ username: data.username }, { email: data.email }],
       },
     });
-
-    return user;
   }
 
   public async findByUsername(username: string): Promise<UserCreatedDTO> {
-    const user = await this.databaseConnection.user.findUnique({
+    return await this.databaseConnection.user.findUnique({
       where: {
         username,
       },
     });
-
-    return user;
   }
 
   public async save(data: CreateUserDTO): Promise<UserCreatedDTO> {
-    const user = await this.databaseConnection.user.create({ data });
-    return user;
+    return await this.databaseConnection.user.create({ data });
   }
 }
