@@ -1,20 +1,27 @@
 import { Module } from '@nestjs/common';
-import { CreateUserUseCase } from './useCases/create-user.usecase';
-import { UserController } from './user.controller';
 import { IUserRepository } from 'src/infra/repositories/interfaces/user.interface.repository';
 import { UserPrismaRepository } from 'src/infra/repositories/user.repository';
+import { AuthController } from './auth.controller';
+import { SignInUseCase } from './useCases/sign-in.usecase';
 import { DatabaseConnection } from 'src/infra/database/database_connection';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
-  imports: [],
-  controllers: [UserController],
+  imports: [
+    JwtModule.register({
+      global: true,
+      secret: 'NEST_SECRET',
+      signOptions: { expiresIn: '60s' },
+    }),
+  ],
+  controllers: [AuthController],
   providers: [
     DatabaseConnection,
-    CreateUserUseCase,
+    SignInUseCase,
     {
       provide: IUserRepository,
       useClass: UserPrismaRepository,
     },
   ],
 })
-export class UserModule {}
+export class AuthModule {}
