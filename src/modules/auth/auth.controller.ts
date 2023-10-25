@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { SignInUseCase } from './useCases/sign-in.usecase';
-import { SignInDTO } from '../../models/dtos/auth/sign-in.dto';
+import { SignInDTO } from '../../domain/dtos/auth/sign-in.dto';
 
 @Controller('/auth')
 export class AuthController {

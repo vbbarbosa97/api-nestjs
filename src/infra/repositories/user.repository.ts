@@ -1,21 +1,21 @@
+import { Injectable } from '@nestjs/common';
+import { CreateUserDTO } from 'src/domain/dtos/user/create-user.dto';
+import { UsernameAndEmailDTO } from 'src/domain/dtos/user/username-email.dto';
+import { UserEntity } from 'src/domain/entities/user.entity';
 import { DatabaseConnection } from 'src/infra/database/database_connection';
 import { IUserRepository } from './interfaces/user.interface.repository';
-import { Injectable } from '@nestjs/common';
-import { UserCreatedDTO } from 'src/models/dtos/user/user-created.dto';
-import { UsernameAndEmailDTO } from 'src/models/dtos/user/username-email.dto';
-import { CreateUserDTO } from 'src/models/dtos/user/create-user.dto';
 
 @Injectable()
 export class UserPrismaRepository implements IUserRepository {
   constructor(private databaseConnection: DatabaseConnection) {}
 
-  public async findById(id: string): Promise<UserCreatedDTO | null> {
+  public async findById(id: string): Promise<UserEntity | null> {
     return await this.databaseConnection.user.findUnique({
       where: { id },
     });
   }
 
-  public async findByUsernameOrEmail(data: UsernameAndEmailDTO): Promise<UserCreatedDTO | null> {
+  public async findByUsernameOrEmail(data: UsernameAndEmailDTO): Promise<UserEntity | null> {
     return await this.databaseConnection.user.findFirst({
       where: {
         OR: [{ username: data.username }, { email: data.email }],
@@ -23,7 +23,7 @@ export class UserPrismaRepository implements IUserRepository {
     });
   }
 
-  public async findByUsername(username: string): Promise<UserCreatedDTO | null> {
+  public async findByUsername(username: string): Promise<UserEntity | null> {
     return await this.databaseConnection.user.findUnique({
       where: {
         username,
@@ -31,7 +31,7 @@ export class UserPrismaRepository implements IUserRepository {
     });
   }
 
-  public async save(data: CreateUserDTO): Promise<UserCreatedDTO> {
+  public async save(data: CreateUserDTO): Promise<UserEntity> {
     return await this.databaseConnection.user.create({ data });
   }
 }

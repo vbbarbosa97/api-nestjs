@@ -1,10 +1,10 @@
-import { CreateUserDTO } from 'src/models/dtos/user/create-user.dto';
-import { UserCreatedDTO } from 'src/models/dtos/user/user-created.dto';
-import { UsernameAndEmailDTO } from 'src/models/dtos/user/username-email.dto';
+import { CreateUserDTO } from 'src/domain/dtos/user/create-user.dto';
+import { UsernameAndEmailDTO } from 'src/domain/dtos/user/username-email.dto';
+import { UserEntity } from 'src/domain/entities/user.entity';
 
 export abstract class IUserRepository {
-  abstract findByUsernameOrEmail(data: UsernameAndEmailDTO): Promise<UserCreatedDTO | null>;
-  abstract findByUsername(username: string): Promise<UserCreatedDTO | null>;
-  abstract findById(id: string): Promise<UserCreatedDTO | null>;
-  abstract save(data: CreateUserDTO): Promise<UserCreatedDTO>;
+  abstract findByUsernameOrEmail(data: UsernameAndEmailDTO): Promise<UserEntity | null>;
+  abstract findByUsername(username: string): Promise<UserEntity | null>;
+  abstract findById(id: string): Promise<UserEntity | null>;
+  abstract save(data: CreateUserDTO): Promise<UserEntity>;
 }
