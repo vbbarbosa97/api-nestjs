@@ -35,7 +35,7 @@ export class SignInUseCase {
       return {
         access_token: token,
       };
-    } catch (error) {
+    } catch (error: any) {
       throw new HttpException(error.message, error.status || HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }

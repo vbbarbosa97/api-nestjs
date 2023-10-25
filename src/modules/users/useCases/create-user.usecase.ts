@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { hash } from 'bcrypt';
-import { CreateUserDTO } from '../dto/user.dto';
 import { IUserRepository } from '../../../infra/repositories/interfaces/user.interface.repository';
+import { CreateUserDTO, CreateUserResponseDTO } from '../dto/create-user.dto';
 
 @Injectable()
 export class CreateUserUseCase {
@@ -25,8 +25,11 @@ export class CreateUserUseCase {
         password,
       });
 
-      return userCreated;
-    } catch (error) {
+      //Faz o mapper automaticamente
+      const userDto = CreateUserResponseDTO.safeParse(userCreated);
+
+      return userDto;
+    } catch (error: any) {
       throw new HttpException(error.message, error.status || HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }

@@ -13,10 +13,10 @@ export class ProfileUserUseCase {
         throw new NotFoundException();
       }
 
-      delete user.password;
+      user.password = '';
 
       return user;
-    } catch (error) {
+    } catch (error: any) {
       throw new HttpException(error.message, error.status || HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }

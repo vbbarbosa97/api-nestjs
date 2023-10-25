@@ -4,4 +4,6 @@ docker run --name curso-nestjs -p 5432:5432 -e POSTGRES_PASSWORD=admin -e POSTGR
 
 npx prisma studio (Abre uma visualização do banco no navegador)
 
+Para utilização do zod deve ser realizar a configura do strict = true no tsconfig.json e adiciona o APP_PIPE no app.module.ts
+
 PROXIMA AULA 11
