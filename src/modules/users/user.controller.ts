@@ -19,6 +19,6 @@ export class UserController {
   @Get('/profile')
   @UseGuards(AuthGuard)
   public async profile(@Request() request) {
-    return this.profileUserUseCase.execute(request.user.sub);
+    return await this.profileUserUseCase.execute(request.user.sub);
   }
 }

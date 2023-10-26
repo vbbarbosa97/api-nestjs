@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { CreateUserUseCase } from './useCases/create-user.usecase';
 import { UserController } from './user.controller';
 import { IUserRepository } from 'src/infra/repositories/interfaces/user.interface.repository';
-import { UserPrismaRepository } from 'src/infra/repositories/user.repository';
+import { UserRepository } from 'src/infra/repositories/user.repository';
 import { DatabaseConnection } from 'src/infra/database/database_connection';
 import { ProfileUserUseCase } from './useCases/profile-user.usecase';
 
@@ -13,7 +13,7 @@ import { ProfileUserUseCase } from './useCases/profile-user.usecase';
     DatabaseConnection,
     {
       provide: IUserRepository,
-      useClass: UserPrismaRepository,
+      useClass: UserRepository,
     },
     CreateUserUseCase,
     ProfileUserUseCase,

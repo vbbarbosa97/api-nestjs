@@ -6,4 +6,4 @@ npx prisma studio (Abre uma visualização do banco no navegador)
 
 Para utilização do zod deve ser realizar a configura do strict = true no tsconfig.json e adiciona o APP_PIPE no app.module.ts
 
-PROXIMA AULA 16
+PROXIMA AULA 18

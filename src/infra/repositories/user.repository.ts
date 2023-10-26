@@ -6,7 +6,7 @@ import { DatabaseConnection } from 'src/infra/database/database_connection';
 import { IUserRepository } from './interfaces/user.interface.repository';
 
 @Injectable()
-export class UserPrismaRepository implements IUserRepository {
+export class UserRepository implements IUserRepository {
   constructor(private databaseConnection: DatabaseConnection) {}
 
   public async findById(id: string): Promise<UserEntity | null> {

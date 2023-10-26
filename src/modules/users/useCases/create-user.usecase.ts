@@ -1,10 +1,12 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { hash } from 'bcrypt';
 import { IUserRepository } from '../../../infra/repositories/interfaces/user.interface.repository';
 import { CreateUserDTO, CreateUserResponseDTO } from '../../../domain/dtos/user/create-user.dto';
 
 @Injectable()
 export class CreateUserUseCase {
+  private readonly logger = new Logger(CreateUserUseCase.name);
+
   constructor(private userRepository: IUserRepository) {}
 
   public async execute(data: CreateUserDTO) {
@@ -15,6 +17,7 @@ export class CreateUserUseCase {
       });
 
       if (userExist) {
+        this.logger.error(`User ${data.username} already exists...`);
         throw new HttpException('User already exists!', HttpStatus.BAD_REQUEST);
       }
 
