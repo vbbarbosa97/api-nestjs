@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserDTO } from 'src/domain/dtos/user/create-user.dto';
-import { UsernameAndEmailDTO } from 'src/domain/dtos/user/username-email.dto';
-import { UserEntity } from 'src/domain/entities/user.entity';
-import { DatabaseConnection } from 'src/infra/database/database_connection';
-import { IUserRepository } from './interfaces/user.interface.repository';
+import { CreateUserDTO } from 'src/domain/dtos/user/CreateUser.dto';
+import { UsernameAndEmailDTO } from 'src/domain/dtos/user/UsernameAndEmail.dto';
+import { UserEntity } from 'src/domain/entities/User.entity';
+import { IUserRepository } from 'src/domain/repositories/IUser.repository';
+import { DatabaseConnection } from 'src/infra/database/DatabaseConnection';
 
 @Injectable()
 export class UserRepository implements IUserRepository {

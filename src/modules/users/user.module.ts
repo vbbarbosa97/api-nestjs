@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { CreateUserUseCase } from './useCases/create-user.usecase';
-import { UserController } from './user.controller';
-import { IUserRepository } from 'src/infra/repositories/interfaces/user.interface.repository';
-import { UserRepository } from 'src/infra/repositories/user.repository';
-import { DatabaseConnection } from 'src/infra/database/database_connection';
-import { ProfileUserUseCase } from './useCases/profile-user.usecase';
+import { CreateUserUseCase } from './useCases/CreateUser.usecase';
+import { DatabaseConnection } from 'src/infra/database/DatabaseConnection';
+import { ProfileUserUseCase } from './useCases/ProfileUser.usecase';
+import { UserRepository } from 'src/infra/repositories/User.repository';
+import { IUserRepository } from 'src/domain/repositories/IUser.repository';
+import { UserController } from './User.controller';
 
 @Module({
   imports: [],

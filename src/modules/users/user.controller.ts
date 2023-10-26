@@ -1,8 +1,10 @@
-import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
-import { AuthGuard } from 'src/providers/auth-guard.provider';
-import { CreateUserDTO } from '../../domain/dtos/user/create-user.dto';
-import { CreateUserUseCase } from './useCases/create-user.usecase';
-import { ProfileUserUseCase } from './useCases/profile-user.usecase';
+import { Body, Controller, Get, Post, Request, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { AuthGuardProvider } from 'src/providers/AuthGuard.provider';
+import { CreateUserUseCase } from './useCases/CreateUser.usecase';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { FileDTO } from 'src/domain/dtos/File.dto';
+import { ProfileUserUseCase } from './useCases/ProfileUser.usecase';
+import { CreateUserDTO } from 'src/domain/dtos/user/CreateUser.dto';
 
 @Controller('/users')
 export class UserController {
@@ -17,8 +19,15 @@ export class UserController {
   }
 
   @Get('/profile')
-  @UseGuards(AuthGuard)
+  @UseGuards(AuthGuardProvider)
   public async profile(@Request() request) {
     return await this.profileUserUseCase.execute(request.user.sub);
+  }
+
+  @Post('/avatar')
+  @UseGuards(AuthGuardProvider)
+  @UseInterceptors(FileInterceptor('file'))
+  public async uploadAvatar(@UploadedFile() file: FileDTO) {
+    console.log(file);
   }
 }

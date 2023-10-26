@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
-import { IUserRepository } from 'src/infra/repositories/interfaces/user.interface.repository';
+import { IUserRepository } from 'src/domain/repositories/IUser.repository';
 
 @Injectable()
 export class ProfileUserUseCase {

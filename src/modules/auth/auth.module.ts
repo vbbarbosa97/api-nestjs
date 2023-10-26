@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { IUserRepository } from 'src/infra/repositories/interfaces/user.interface.repository';
-import { UserRepository } from 'src/infra/repositories/user.repository';
-import { AuthController } from './auth.controller';
-import { SignInUseCase } from './useCases/sign-in.usecase';
-import { DatabaseConnection } from 'src/infra/database/database_connection';
+import { DatabaseConnection } from 'src/infra/database/DatabaseConnection';
 import { JwtModule } from '@nestjs/jwt';
+import { AuthController } from './Auth.controller';
+import { SignInUseCase } from './useCases/SignIn.usecase';
+import { IUserRepository } from 'src/domain/repositories/IUser.repository';
+import { UserRepository } from 'src/infra/repositories/User.repository';
 
 @Module({
   imports: [

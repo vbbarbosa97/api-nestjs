@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CreateTaskUserDTO } from 'src/domain/dtos/taskUser/create-task-user.dto';
-import { ITaskUserRepository } from 'src/infra/repositories/interfaces/task-user.interface.repository';
+import { CreateTaskUserDTO } from 'src/domain/dtos/taskUser/CreateTaskUser.dto';
+import { ITaskUserRepository } from 'src/domain/repositories/ITaskUser.repository';
 
 @Injectable()
 export class CreateTaskUserUseCase {

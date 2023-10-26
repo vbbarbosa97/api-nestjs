@@ -1,7 +1,7 @@
-import { CreateTaskUserDTO } from 'src/domain/dtos/taskUser/create-task-user.dto';
-import { TaskUserEntity } from 'src/domain/entities/task-user.entity';
-import { ITaskUserRepository } from './interfaces/task-user.interface.repository';
-import { DatabaseConnection } from '../database/database_connection';
+import { CreateTaskUserDTO } from 'src/domain/dtos/taskUser/CreateTaskUser.dto';
+import { TaskUserEntity } from 'src/domain/entities/TaskUser.entity';
+import { ITaskUserRepository } from '../../domain/repositories/ITaskUser.repository';
+import { DatabaseConnection } from '../database/DatabaseConnection';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
