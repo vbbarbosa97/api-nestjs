@@ -7,4 +7,5 @@ export abstract class IUserRepository {
   abstract findByUsername(username: string): Promise<UserEntity | null>;
   abstract findById(id: string): Promise<UserEntity | null>;
   abstract save(data: CreateUserDTO): Promise<UserEntity>;
+  abstract updateAvatarUrl(id: string, avatarUrl: string): Promise<void>;
 }

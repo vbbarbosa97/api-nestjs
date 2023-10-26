@@ -9,6 +9,13 @@ import { DatabaseConnection } from 'src/infra/database/DatabaseConnection';
 export class UserRepository implements IUserRepository {
   constructor(private databaseConnection: DatabaseConnection) {}
 
+  public async updateAvatarUrl(id: string, avatarUrl: string): Promise<void> {
+    await this.databaseConnection.user.update({
+      where: { id },
+      data: { avatarUrl },
+    });
+  }
+
   public async findById(id: string): Promise<UserEntity | null> {
     return await this.databaseConnection.user.findUnique({
       where: { id },
