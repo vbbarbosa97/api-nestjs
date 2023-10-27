@@ -4,9 +4,10 @@ import { ZodValidationPipe } from 'nestjs-zod';
 import { TaskUserModule } from './modules/tasks/TaskUser.module';
 import { AuthModule } from './modules/auth/Auth.module';
 import { UserModule } from './modules/users/User.module';
+import { NotificationModule } from './modules/notification/notification.module';
 
 @Module({
-  imports: [UserModule, AuthModule, TaskUserModule],
+  imports: [UserModule, AuthModule, TaskUserModule, NotificationModule],
   controllers: [],
   providers: [
     {
