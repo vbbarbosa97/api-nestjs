@@ -3,11 +3,11 @@ import { CreateUserDTO } from 'src/domain/dtos/user/CreateUser.dto';
 import { UsernameAndEmailDTO } from 'src/domain/dtos/user/UsernameAndEmail.dto';
 import { UserEntity } from 'src/domain/entities/User.entity';
 import { IUserRepository } from 'src/domain/repositories/IUser.repository';
-import { DatabaseConnection } from 'src/infra/database/DatabaseConnection';
+import { DatabaseConnectionService } from 'src/infra/database/DatabaseConnection.service';
 
 @Injectable()
 export class UserRepository implements IUserRepository {
-  constructor(private databaseConnection: DatabaseConnection) {}
+  constructor(private databaseConnection: DatabaseConnectionService) {}
 
   public async updateAvatarUrl(id: string, avatarUrl: string): Promise<void> {
     await this.databaseConnection.user.update({

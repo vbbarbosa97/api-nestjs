@@ -1,8 +1,8 @@
-export type UserEntity = {
-  id: string;
-  email: string;
-  name: string;
-  password: string;
-  username: string;
-  createdAt: Date;
-};
+export class UserEntity {
+  public id: string;
+  public email: string;
+  public name: string;
+  public password: string;
+  public username: string;
+  public createdAt: Date;
+}
